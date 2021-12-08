@@ -106,9 +106,11 @@ public class MainActivity extends AppCompatActivity {
                 for (usuarios ladata: kushkiList)
                 {
                     String labelId = "Id: ";
-                    String labelNombre = "Volumen: ";
+                    String labelNombre = "Nombre: ";
 
-                    SpannableString myTextCode = new SpannableString(labelId + "\n");
+
+
+                    SpannableString myTextCode = new SpannableString(labelId + ladata.getData() +"\n");
                     SpannableString myTextName = new SpannableString(labelNombre + ladata.getData()+ "\n\n");
 
                     StyleSpan bold = new StyleSpan(Typeface.BOLD);
@@ -147,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
         else if(sp.getSelectedItem().toString().toUpperCase().equals("Volley".toUpperCase()))
         {
             Toast.makeText(this, "Su petición está siendo procesada.....", Toast.LENGTH_LONG).show();
-              getKushkipagoVolley();
+              findV();
         }
         else
         {
@@ -159,7 +161,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
- private void getKushkipagoVolley() {
+ private void findV() {
 
         RequestQueue requestQueue;
         requestQueue = Volley.newRequestQueue(this);
@@ -179,8 +181,11 @@ public class MainActivity extends AppCompatActivity {
                          JSONObject data = jsonArray.getJSONObject(i);
                          lista.add("Nombre: " +
                                  data.getString("name").toString()  +"\n Email: " +
+
                                  data.getString("email") +   "\n Género: " +
+
                                  data.getString("gender") +  "\n Estado: " +
+
                                  data.getString("status") + "\n\n");
                      }
                      datos.setKeyListener(null);
